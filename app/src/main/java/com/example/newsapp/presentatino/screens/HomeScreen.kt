@@ -27,7 +27,7 @@ fun HomeScreen(
     Column(
         modifier= Modifier.padding(horizontal =  Dimension.MEDIUM_PADDING)
     ){
-        NewSearchBar(modifier , {},listOf(
+        NewSearchBar(modifier , {onSearch(it)},listOf(
             "History 1",
             "History 2",
             "History 3"),

@@ -5,6 +5,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -36,14 +37,18 @@ fun MainApp(
                 startDestination = InnerHome
             ){
                 composable(InnerHome){
-                    HomeScreen(topHeadLine) { }
+                    HomeScreen(topHeadLine, Modifier) {search->
+                        if (search.isNotBlank()){
+                            navController.navigate("$SearcherResult/${search}")
+                        }
+                    }
                 }
-                composable(SearcherResult){
-                    SearchScreen(modifier.padding(padding))
+                composable("$SearcherResult/{Search}", listOf(navArgument("Search"){type = NavType.StringType})){
+                    val search = it.arguments?.getString("Search")
+                    SearchScreen(search.toString(),viewModel)
                 }
             }
             composable(Save){
-
             }
         }
     }

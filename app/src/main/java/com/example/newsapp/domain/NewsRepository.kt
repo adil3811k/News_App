@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface NewsRepository {
     fun getTopHeadLine(): Flow<PagingData<Article>>
+    fun getSearchResult(search: String): Flow<PagingData<Article>>
 }

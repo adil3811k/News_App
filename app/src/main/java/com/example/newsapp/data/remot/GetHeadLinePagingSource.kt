@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.newsapp.data.remot.dao.NewsApi
 
-class NewPagingSource(
+class GetHeadLinePagingSource(
     private val newsApi: NewsApi,
 ) : PagingSource<Int, Article>(){
 
@@ -39,5 +39,4 @@ class NewPagingSource(
             )
         }
     }
-
 }
