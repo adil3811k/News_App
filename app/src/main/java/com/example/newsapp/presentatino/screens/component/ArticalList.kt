@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,10 +18,9 @@ import com.example.newsapp.presentatino.Dimension
 @Composable
 fun ArticleList(
      articles: LazyPagingItems<Article>,
-    modifier: Modifier = Modifier,
     onClick:(Article)-> Unit
 ) {
-    val handelPagingResult  = HandelPagingResult(articles)
+    val handelPagingResult  = handelPagingResult(articles)
     if (handelPagingResult){
         LazyColumn(
             Modifier.fillMaxSize(),
@@ -39,7 +37,7 @@ fun ArticleList(
 }
 
 @Composable
-fun HandelPagingResult(
+private fun handelPagingResult(
     articles: LazyPagingItems<Article>,
     modifier: Modifier = Modifier) : Boolean{
     val loadState = articles.loadState

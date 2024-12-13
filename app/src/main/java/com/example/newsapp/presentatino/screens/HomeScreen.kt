@@ -23,6 +23,7 @@ fun HomeScreen(
     articals: LazyPagingItems<Article>,
     modifier: Modifier = Modifier,
     onSearch:(String) -> Unit,
+    onArticleClick:(Article)-> Unit
 ) {
     Column(
         modifier= Modifier.padding(horizontal =  Dimension.MEDIUM_PADDING)
@@ -32,6 +33,8 @@ fun HomeScreen(
             "History 2",
             "History 3"),
         ) { }
-        ArticleList(articals) { }
+        ArticleList(articals) {
+            onArticleClick(it)
+        }
     }
 }

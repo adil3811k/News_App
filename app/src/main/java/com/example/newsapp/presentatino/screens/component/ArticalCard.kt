@@ -43,10 +43,7 @@ fun ArticleCard(
     ){
         AsyncImage(
             placeholder = painterResource(R.drawable.splash_icon),
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(article.urlToImage)
-                .crossfade(true)
-                .build(),
+            model = article.urlToImage,
             contentDescription = "Image",
             modifier = modifier
                 .padding(end = SMALL_PADDING)
@@ -71,13 +68,3 @@ fun ArticleCard(
 }
 
 
-@Preview
-@Composable
-private fun pare() {
-    AsyncImage(
-        placeholder = painterResource(R.drawable.splash_icon),
-        model = "https://example.com/image.jpg",
-        contentDescription = "Image",
-
-    )
-}

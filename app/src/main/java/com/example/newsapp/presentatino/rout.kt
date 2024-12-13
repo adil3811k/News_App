@@ -6,4 +6,5 @@ object Routs{
     val Save = "Save"
     val InnerHome  ="InnerHome"
     val SearcherResult = "SearchResult"
+    val Detail = "Detail"
 }
