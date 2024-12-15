@@ -90,6 +90,7 @@ dependencies {
     val room_version = "2.6.1"
     implementation("androidx.room:room-runtime:$room_version")
     ksp("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:2.6.1")
 
     // Coil
     implementation("io.coil-kt.coil3:coil-compose:3.0.4")
