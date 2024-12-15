@@ -2,6 +2,7 @@ package com.example.newsapp.data.local
 
 import com.example.newsapp.data.remot.Article
 import com.example.newsapp.domain.LocalNewsRepository
+import kotlinx.coroutines.flow.Flow
 
 class LocalRepositoryImp(
     private val dao: RoomDao
@@ -22,5 +23,9 @@ class LocalRepositoryImp(
 
     override suspend fun deleteArticle(article: Article) {
         dao.deleteArticle(article)
+    }
+
+    override  fun getAllFavorites(): Flow<List<Article>> {
+        return dao.getAllFavorites()
     }
 }

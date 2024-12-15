@@ -25,9 +25,7 @@ fun HomeScreen(
     onSearch:(String) -> Unit,
     onArticleClick:(Article)-> Unit
 ) {
-    Column(
-        modifier= Modifier.padding(horizontal =  Dimension.MEDIUM_PADDING)
-    ){
+    Column{
         NewSearchBar(modifier , {onSearch(it)},listOf(
             "History 1",
             "History 2",

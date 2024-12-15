@@ -25,6 +25,7 @@ import com.example.newsapp.presentatino.Routs.SearcherResult
 import com.example.newsapp.presentatino.Routs.WebPage
 import com.example.newsapp.presentatino.screens.DetailScreen
 import com.example.newsapp.presentatino.screens.HomeScreen
+import com.example.newsapp.presentatino.screens.SaveScreen
 import com.example.newsapp.presentatino.screens.SearchScreen
 import com.example.newsapp.presentatino.screens.WebViewScreen
 import com.example.newsapp.presentatino.screens.component.BottomBar
@@ -93,7 +94,10 @@ fun MainApp(
             }
             // All Book mark Screen
             composable(Save){
-
+                SaveScreen {article->
+                    navController.currentBackStackEntry?.savedStateHandle?.set("Article", article)
+                    navController.navigate(Detail)
+                }
             }
             composable("$WebPage/{URL}",listOf(navArgument("URL"){type= NavType.StringType})){
                 val encodedURL = it.arguments?.getString("URL")
