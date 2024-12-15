@@ -70,8 +70,6 @@ private fun HistoryCom(
         Icon(
             Icons.Filled.Refresh,
             null,
-            modifier
-                .size(Dimension.ICONS_SIZE)
         )
         Text(
             text =text,
@@ -83,7 +81,6 @@ private fun HistoryCom(
             null,
             modifier = modifier
                 .clickable{onHistoryRemove(text)}
-                .size(Dimension.ICONS_SIZE)
         )
     }
 }

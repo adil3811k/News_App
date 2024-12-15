@@ -43,7 +43,7 @@ fun ArticleCard(
     ){
         AsyncImage(
             placeholder = painterResource(R.drawable.splash_icon),
-            model = article.urlToImage,
+            model = if(article.urlToImage!=null) article.urlToImage else R.drawable.splash_icon,
             contentDescription = "Image",
             modifier = modifier
                 .padding(end = SMALL_PADDING)

@@ -95,6 +95,9 @@ dependencies {
     implementation("io.coil-kt.coil3:coil-compose:3.0.4")
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.4")
 
+    // WebView
+    implementation("androidx.webkit:webkit:1.8.0")
+
 
     // Paging
     val paging_version = "2.1.2"

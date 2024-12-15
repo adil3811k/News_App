@@ -7,4 +7,5 @@ object Routs{
     val InnerHome  ="InnerHome"
     val SearcherResult = "SearchResult"
     val Detail = "Detail"
+    val WebPage ="WebPage"
 }

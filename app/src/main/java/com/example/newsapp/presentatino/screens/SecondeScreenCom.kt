@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.newsapp.data.remot.Article
 import com.example.newsapp.presentatino.screens.component.ArticleList
 import com.example.newsapp.presentatino.viewModel.MainViewModel
 import kotlinx.coroutines.GlobalScope
@@ -22,7 +23,7 @@ import kotlinx.coroutines.launch
 fun SearchScreen(
     search: String,
     mainViewModel: MainViewModel,
-    modifier : Modifier = Modifier
+    onItemClick:(Article)->Unit
 ){
     val articles =mainViewModel.searchNews(search).collectAsLazyPagingItems()
     Column(
@@ -31,6 +32,6 @@ fun SearchScreen(
         Text(
             text = "Search Result"
         )
-        ArticleList(articles) { }
+        ArticleList(articles) {onItemClick(it) }
     }
 }
