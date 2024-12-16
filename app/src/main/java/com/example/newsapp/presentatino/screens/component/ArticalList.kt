@@ -18,6 +18,7 @@ import com.example.newsapp.presentatino.Dimension
 
 @Composable
 fun ArticleList(
+    modifier: Modifier = Modifier,
      articles: LazyPagingItems<Article>,
     onClick:(Article)-> Unit
 ) {

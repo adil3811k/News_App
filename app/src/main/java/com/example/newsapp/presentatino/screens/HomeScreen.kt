@@ -5,11 +5,15 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.paging.compose.LazyPagingItems
 import com.example.newsapp.data.local.SearchHistory
 import com.example.newsapp.data.remot.Article
@@ -29,10 +33,13 @@ fun HomeScreen(
 ) {
     Column{
         NewSearchBar(Modifier , {onSearch(it)},list
-        ) {
-            onSearchDelete(it)
-        }
-        ArticleList(articals) {
+        ) { onSearchDelete(it) }
+        Text(
+            text = "Top Headline of US",
+            style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier.padding(top = 12.dp , bottom = 12.dp)
+        )
+        ArticleList(Modifier,articals) {
             onArticleClick(it)
         }
     }
