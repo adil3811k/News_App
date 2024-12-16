@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.paging.compose.LazyPagingItems
+import com.example.newsapp.data.local.SearchHistory
 import com.example.newsapp.data.remot.Article
 import com.example.newsapp.presentatino.Dimension
 import com.example.newsapp.presentatino.screens.component.ArticleList
@@ -21,16 +22,16 @@ import com.example.newsapp.presentatino.screens.component.ShimmerEffect
 @Composable
 fun HomeScreen(
     articals: LazyPagingItems<Article>,
-    modifier: Modifier = Modifier,
+    list: List<SearchHistory>,
     onSearch:(String) -> Unit,
+    onSearchDelete:(Int)-> Unit,
     onArticleClick:(Article)-> Unit
 ) {
     Column{
-        NewSearchBar(modifier , {onSearch(it)},listOf(
-            "History 1",
-            "History 2",
-            "History 3"),
-        ) { }
+        NewSearchBar(Modifier , {onSearch(it)},list
+        ) {
+            onSearchDelete(it)
+        }
         ArticleList(articals) {
             onArticleClick(it)
         }

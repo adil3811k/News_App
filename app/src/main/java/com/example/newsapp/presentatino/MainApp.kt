@@ -6,8 +6,10 @@ import android.util.Log
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -15,6 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import androidx.navigation.navigation
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.newsapp.data.local.SearchHistory
 import com.example.newsapp.data.remot.Article
 import com.example.newsapp.data.remot.Source
 import com.example.newsapp.presentatino.Routs.Detail
@@ -42,6 +45,7 @@ fun MainApp(
     val navController = rememberNavController()
     val viewModel = hiltViewModel<MainViewModel>()
     val topHeadLine = viewModel.topHeadLine.collectAsLazyPagingItems()
+    val searchHistory = viewModel.searchHistory.collectAsState()
     Scaffold (
         bottomBar = { BottomBar(navController) }
     ){padding->
@@ -53,11 +57,12 @@ fun MainApp(
             ){
                 // inner home Screen
                 composable(InnerHome){
-                    HomeScreen(articals =  topHeadLine, modifier = Modifier, onSearch = { search ->
-                        if (search.isNotBlank()) {
-                            navController.navigate("$SearcherResult/${search}")
-                        }
-                    }
+                    HomeScreen(
+                        articals =  topHeadLine,
+                        onSearch = { search -> if (search.isNotBlank()) { viewModel.addToSearchHistory(search)
+                            navController.navigate("$SearcherResult/${search}") } },
+                        list = searchHistory.value,
+                        onSearchDelete = {viewModel.deleteSearch(it)}
                     ){article->
                         // Navigate to Detail Screen
                         try {
